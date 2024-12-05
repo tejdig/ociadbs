@@ -19,10 +19,11 @@ import copy
 from datetime import datetime, timedelta
 from oci_adbs_utility import convert_no_utc_to_dubai, convert_utc_to_dubai
 from oci_db_fleet_management import *
+from json2html import *
 
 def main():
     # Initialize OCI configuration
-    config = oci.config.from_file("~/.oci/config", "DEFAULT")
+    config = oci.config.from_file("~/.oci/config", "eand")
     # Get the tenancy OCID (root compartment OCID)
     tenancy_id = config["tenancy"]
     # Initialize the Identity and Database clients
@@ -39,7 +40,9 @@ def main():
                 "compartment_id": compartment["id"],
                 "database_databases": db_list
             })
-    print(json.dumps(compartment_data, indent=4))
+    db_json_report = json.dumps(compartment_data, indent=4)
+    db_html_report = json2html.convert(json = db_json_report)
+    print(db_html_report)
 
 
 if __name__ == "__main__":
