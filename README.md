@@ -30,8 +30,8 @@ Covers patching windows, current patch status, and backup details for each datab
 Installation
 Clone this repository:
 
-git clone https://github.com/<your-repo-name>.git
-cd <your-repo-name>
+git clone https://github.com/ociadbs.git
+cd ociadbs
 Install the required dependencies:
 
 OCI Configuration Setup
